@@ -6,7 +6,7 @@ from comfy_api.latest import ComfyExtension, io
 from .nodes.fetch_widget_value import FetchWidgetValue
 from .nodes.ksampler import AlruKSamplerPlus
 from .nodes.clip_encode import AlruCLIPTextEncodePositive, AlruCLIPTextEncodeNegative
-from .nodes.selectors import AlruSelectSampler, AlruSelectScheduler
+from .nodes.selectors import AlruSelectSampler, AlruSelectScheduler, AlruSelectCheckpoint
 
 WEB_DIRECTORY = "./web"
 
@@ -21,6 +21,7 @@ class AlruToolsExtension(ComfyExtension):
             AlruCLIPTextEncodeNegative,
             AlruSelectSampler,
             AlruSelectScheduler,
+            AlruSelectCheckpoint,
         ]
 
 

@@ -1,6 +1,7 @@
-"""Standalone selector nodes for sampler and scheduler."""
+"""Standalone selector nodes for sampler, scheduler, and checkpoint."""
 
 import comfy.samplers
+import folder_paths
 
 from comfy_api.latest import io
 
@@ -51,3 +52,27 @@ class AlruSelectScheduler(io.ComfyNode):
     @classmethod
     def execute(cls, scheduler) -> io.NodeOutput:
         return io.NodeOutput(scheduler, scheduler)
+
+
+class AlruSelectCheckpoint(io.ComfyNode):
+    """Select a checkpoint model. Outputs as both Combo and String."""
+
+    @classmethod
+    def define_schema(cls) -> io.Schema:
+        return io.Schema(
+            node_id="AlruSelectCheckpoint",
+            display_name="Select Checkpoint",
+            category="loaders/Alru Tools",
+            inputs=[
+                io.Combo.Input("ckpt_name",
+                               options=folder_paths.get_filename_list("checkpoints")),
+            ],
+            outputs=[
+                io.Combo.Output("CKPT_NAME"),
+                io.String.Output("CKPT_NAME_STR"),
+            ],
+        )
+
+    @classmethod
+    def execute(cls, ckpt_name) -> io.NodeOutput:
+        return io.NodeOutput(ckpt_name, ckpt_name)
