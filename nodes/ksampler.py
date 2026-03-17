@@ -81,9 +81,11 @@ class AlruKSamplerPlus(io.ComfyNode):
                 io.Int.Output("SEED"),
                 io.Int.Output("STEPS"),
                 io.Float.Output("CFG"),
-                io.String.Output("SAMPLER_NAME"),
-                io.String.Output("SCHEDULER"),
+                io.Combo.Output("SAMPLER_NAME"),
+                io.Combo.Output("SCHEDULER"),
                 io.Float.Output("DENOISE"),
+                io.String.Output("SAMPLER_NAME_STR"),
+                io.String.Output("SCHEDULER_STR"),
             ],
         )
 
@@ -97,4 +99,5 @@ class AlruKSamplerPlus(io.ComfyNode):
         return io.NodeOutput(
             latent_out, model, positive, negative,
             seed, steps, cfg, sampler_name, scheduler, denoise,
+            sampler_name, scheduler,
         )
