@@ -4,6 +4,7 @@ from typing_extensions import override
 
 from comfy_api.latest import ComfyExtension, io
 from .nodes.fetch_widget_value import FetchWidgetValue
+from .nodes.ksampler import AlruKSamplerPlus
 
 
 class AlruToolsExtension(ComfyExtension):
@@ -11,6 +12,7 @@ class AlruToolsExtension(ComfyExtension):
     async def get_node_list(self) -> list[type[io.ComfyNode]]:
         return [
             FetchWidgetValue,
+            AlruKSamplerPlus,
         ]
 
 
