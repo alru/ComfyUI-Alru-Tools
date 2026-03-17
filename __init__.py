@@ -8,6 +8,8 @@ from .nodes.ksampler import AlruKSamplerPlus
 from .nodes.clip_encode import AlruCLIPTextEncodePositive, AlruCLIPTextEncodeNegative
 from .nodes.selectors import AlruSelectSampler, AlruSelectScheduler
 
+WEB_DIRECTORY = "./web"
+
 
 class AlruToolsExtension(ComfyExtension):
     @override
