@@ -78,6 +78,12 @@ class AlruKSamplerPlus(io.ComfyNode):
                 io.Model.Output("MODEL", tooltip="Passthrough model."),
                 io.Conditioning.Output("POSITIVE", tooltip="Passthrough positive conditioning."),
                 io.Conditioning.Output("NEGATIVE", tooltip="Passthrough negative conditioning."),
+                io.Int.Output("SEED"),
+                io.Int.Output("STEPS"),
+                io.Float.Output("CFG"),
+                io.String.Output("SAMPLER_NAME"),
+                io.String.Output("SCHEDULER"),
+                io.Float.Output("DENOISE"),
             ],
         )
 
@@ -88,4 +94,7 @@ class AlruKSamplerPlus(io.ComfyNode):
             model, seed, steps, cfg, sampler_name, scheduler,
             positive, negative, latent_image, denoise=denoise,
         )
-        return io.NodeOutput(latent_out, model, positive, negative)
+        return io.NodeOutput(
+            latent_out, model, positive, negative,
+            seed, steps, cfg, sampler_name, scheduler, denoise,
+        )
